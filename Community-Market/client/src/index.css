@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Blue and White Theme */
+  --primary: 211 100% 50%; /* #007AFF - Vivid Blue */
+  --primary-foreground: 0 0% 100%; /* White */
+  
+  --background: 0 0% 100%; /* White */
+  --foreground: 0 0% 0%; /* Black */
+
+  --card: 0 0% 100%;
+  --card-foreground: 0 0% 0%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 0 0% 0%;
+
+  --secondary: 210 40% 96.1%;
+  --secondary-foreground: 222.2 47.4% 11.2%;
+
+  --muted: 210 40% 96.1%;
+  --muted-foreground: 215.4 16.3% 46.9%; /* Grey for extra text */
+
+  --accent: 210 40% 96.1%;
+  --accent-foreground: 222.2 47.4% 11.2%;
+
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 210 40% 98%;
+
+  --border: 214.3 31.8% 91.4%;
+  --input: 214.3 31.8% 91.4%;
+  --ring: 211 100% 50%;
+  
+  --radius: 1rem; /* Rounded edges */
+
+  --font-sans: 'DM Sans', sans-serif;
+  --font-display: 'Outfit', sans-serif;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground antialiased font-sans pb-20; /* pb-20 for bottom nav */
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    @apply tracking-tight;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted-foreground) / 0.3);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--muted-foreground) / 0.5);
+}
+
+/* Mobile-first polish */
+.glass-nav {
+  @apply bg-white/95 backdrop-blur-lg border-t border-border shadow-lg shadow-black/5;
+}
+
+.tap-active:active {
+  @apply scale-95 transition-transform duration-100;
+}
+
+/* Professional design utilities */
+.text-gradient {
+  @apply text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-600;
+}
+
+.card-shadow {
+  @apply shadow-sm hover:shadow-md transition-shadow duration-200;
+}
+
+.input-focus {
+  @apply border-primary/30 focus:border-primary focus:ring-2 focus:ring-primary/10;
+}
+
+/* Loading skeleton animation */
+@keyframes shimmer {
+  0% { background-position: -1000px 0; }
+  100% { background-position: 1000px 0; }
+}
+
+.skeleton-loading {
+  animation: shimmer 2s infinite;
+  background: linear-gradient(to right, #f0f0f0 8%, #f5f5f5 18%, #f0f0f0 33%);
+  background-size: 1000px 100%;
+}
